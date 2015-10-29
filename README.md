@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/askfast/strowger-sdk.svg)](https://travis-ci.org/askfast/strowger-sdk)
+
 # Strowger Java SDK
 
 The SDK to interact with the strowger API.
