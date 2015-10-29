@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.askfast.strowger.sdk</groupId>
+  <artifactId>strowger-sdk</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  
+  <name>Strowger SDK</name>
+  <description>Java helper library for Strowger API</description>
+
+  <licenses>
+    <license>
+	  <name>The Apache Software License, Version 2.0</name>
+	  <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	  <distribution>repo</distribution>
+	  <comments>A business-friendly OSS license</comments>
+	</license>
+	<license>
+	  <name>The MIT License</name>
+	  <url>http://www.opensource.org/licenses/mit-license.php</url>
+	  <distribution>repo</distribution>
+	</license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:askfast/strowger-sdk.git</connection>
+    <url>scm:git:git@github.com:askfast/strowger-sdk.git</url>
+    <developerConnection>scm:git:git@github.com:askfast/strowger-sdk.git</developerConnection>
+  </scm>
+
+  <organization>
+    <name>AskFast BV</name>
+    <url>http://www.ask-fast.com/</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <name>ASKFast Support</name>
+      <id>support</id>
+      <email>support@ask-fast.com</email>
+      <organization>AskFast BV, the Netherlands</organization>
+      <url>http://www.ask-fast.com/</url>
+      <timezone>1</timezone>
+      </developer>
+  </developers>
+  
+  <properties>
+    <jackson.version>2.5.4</jackson.version>
+    <okhttp.version>2.5.0</okhttp.version>
+    <retrofit.version>2.0.0-beta2</retrofit.version>
+    <junit.version>4.11</junit.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+	  <groupId>com.squareup.retrofit</groupId>
+	  <artifactId>retrofit</artifactId>
+	  <version>${retrofit.version}</version>
+	</dependency>
+	<dependency>
+	  <groupId>com.squareup.retrofit</groupId>
+	  <artifactId>converter-jackson</artifactId>
+	  <version>${retrofit.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+	  <groupId>com.squareup.okhttp</groupId>
+	  <artifactId>mockwebserver</artifactId>
+	  <version>${okhttp.version}</version>
+	  <scope>test</scope>
+	</dependency>
+  </dependencies>
+  
+  <!-- Sonatype repo submission stuff -->
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
