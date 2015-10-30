@@ -9,7 +9,7 @@ public class StatusCallback {
     private URI url;
     private List<String> events;
     
-    public StatusCallback(URI url) {
+    public StatusCallback(URI url, List<String> events) {
         this.url = url;
     }
     

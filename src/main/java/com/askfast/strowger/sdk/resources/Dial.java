@@ -11,10 +11,8 @@ public class Dial{
     private List<Peer> peers;
     private URI controlUrl;
     private URI controlFallbackUrl;
-    private URI completionUrl;
     private String sendKeys;
-    private Integer ringTimeout;
-    private Integer callTimeout;
+    private Integer timeout;
     private String callerId;
     private String record;
     private Boolean finishOnStar;
@@ -51,14 +49,6 @@ public class Dial{
         this.controlFallbackUrl = controlFallbackUrl;
     }
     
-    public URI getCompletionUrl() {
-        return completionUrl;
-    }
-    
-    public void setCompletionUrl( URI completionUrl ) {
-        this.completionUrl = completionUrl;
-    }
-    
     public String getSendKeys() {
         return sendKeys;
     }
@@ -67,20 +57,12 @@ public class Dial{
         this.sendKeys = sendKeys;
     }
     
-    public Integer getRingTimeout() {
-        return ringTimeout;
+    public Integer getTimeout() {
+        return timeout;
     }
     
-    public void setRingTimeout( Integer ringTimeout ) {
-        this.ringTimeout = ringTimeout;
-    }
-    
-    public Integer getCallTimeout() {
-        return callTimeout;
-    }
-    
-    public void setCallTimeout( Integer callTimeout ) {
-        this.callTimeout = callTimeout;
+    public void setTimeout( Integer timeout ) {
+        this.timeout = timeout;
     }
     
     public String getCallerId() {
