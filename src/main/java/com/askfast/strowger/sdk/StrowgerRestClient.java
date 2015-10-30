@@ -19,7 +19,7 @@ public class StrowgerRestClient {
 
     private static OkHttpClient httpClient = new OkHttpClient();
     
-    public static final String DEFAULT_ENDPOINT = "https://api.thinkingphones.com";
+    public static final String DEFAULT_ENDPOINT = "https://strowger.thinkingphones.com";
 
     private String tenantKey = null;
     private String token = null;

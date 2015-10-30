@@ -6,15 +6,16 @@ public class Peer {
     private String peer;
     private StatusCallback statusCallback;
     
-    public Peer (String peer) {
+    public Peer (String peer, StatusCallback statusCallback) {
         this.peer = peer;
+        this.statusCallback = statusCallback;
     }
     
     public String getPeer() {
         return peer;
     }
     
-    public void setPeer( String peer ) {
+    public void setPeer( String peer, StatusCallback callback ) {
         this.peer = peer;
     }
     
