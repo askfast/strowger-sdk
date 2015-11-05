@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
+/**
+ * Action is the interface class for all the strowger api actions
+ *
+ */
 @JsonTypeInfo(include=As.WRAPPER_OBJECT, use=Id.NAME, property="type")
 @JsonSubTypes({
     @JsonSubTypes.Type(value = Decline.class, name = "decline"),

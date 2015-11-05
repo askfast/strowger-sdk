@@ -1,67 +1,62 @@
 package com.askfast.strowger.sdk.model;
 
+import com.askfast.strowger.util.JOM;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StrowgerBase {
-    
-    protected static ObjectMapper om = null;
 
     protected Integer status;
-    protected Integer version;
+    protected String version;
     protected String msg;
     
     
     public StrowgerBase() {
         status = 0;
-        version = 1;
+        version = "1.0";
         msg = "";
-    }
-    
-    public Integer getStatus() {
-        return status;
     }
     
     /**
      * Status indicates whether the request was successful or not. A value of zero means success, any other value will be considered an error.
-     * @param status
+     * @return status code of the strowger request
      */
+    public Integer getStatus() {
+        return status;
+    }
+    
     public void setStatus( Integer status ) {
         this.status = status;
     }
     
-    public Integer getVersion() {
+    /**
+     * Version sets the version format for the response and commands.
+     * @return version of the strowger api
+     */
+    public String getVersion() {
         return version;
     }
     
-    /**
-     * Version sets the version format for the response and commands.
-     * @param version
-     */
-    public void setVersion( Integer version ) {
+    public void setVersion( String version ) {
         this.version = version;
-    }
-    
-    public String getMsg() {
-        return msg;
     }
     
     /**
      * a contextual message for the response. This message will not be interpreted in any way, but logged straight into the call request log.
-     * @param msg
+     * @return error message of strowger request
      */
+    public String getMsg() {
+        return msg;
+    }
+    
     public void setMsg( String msg ) {
         this.msg = msg;
     }
     
     @JsonIgnore
     public String toJson() {
-        if(om == null) {
-          om = new ObjectMapper();
-          om.setSerializationInclusion(Include.NON_NULL);
-        }
+        ObjectMapper om = JOM.getInstance();
         String result = null;
         try {
             result = om.writeValueAsString( this );

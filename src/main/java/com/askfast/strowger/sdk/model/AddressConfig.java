@@ -1,23 +1,25 @@
-package com.askfast.strowger.sdk.resources;
+package com.askfast.strowger.sdk.model;
 
 import java.net.URI;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-
-@JsonTypeInfo(include=As.WRAPPER_OBJECT, use=Id.NAME)
-@JsonTypeName(value = "config")
 public class AddressConfig {
 
     private URI controlUrl;
     private URI fallbackControlUrl;
+    private URI statusUrl;
     private Integer timeout;
     
-    public AddressConfig(URI controlUrl, URI fallbackControlUrl, Integer timeout) {
+    public AddressConfig(URI controlUrl, URI statusUrl) {
+        this.controlUrl = controlUrl;
+        this.fallbackControlUrl = controlUrl;
+        this.statusUrl = statusUrl;
+        this.timeout = 30000;
+    }
+    
+    public AddressConfig(URI controlUrl, URI fallbackControlUrl, URI statusUrl, Integer timeout) {
         this.controlUrl = controlUrl;
         this.fallbackControlUrl = fallbackControlUrl;
+        this.statusUrl = statusUrl;
         this.timeout = timeout;
     }
     
@@ -35,6 +37,14 @@ public class AddressConfig {
     
     public void setFallbackControlUrl( URI fallbackControlUrl ) {
         this.fallbackControlUrl = fallbackControlUrl;
+    }
+    
+    public URI getStatusUrl() {
+        return statusUrl;
+    }
+    
+    public void setStatusUrl( URI statusUrl ) {
+        this.statusUrl = statusUrl;
     }
     
     public Integer getTimeout() {

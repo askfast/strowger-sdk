@@ -16,7 +16,7 @@ public class StrowgerActionTest{
         StrowgerAction action = new StrowgerAction();
         action.addAction( new Play(URI.create("http://test.wav")) );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":1,\"msg\":\"\",\"data\":[{\"play\":{\"location\":\"http://test.wav\"}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"play\":{\"location\":\"http://test.wav\"}}]}", action.toJson() );
     }
     
     @Test
@@ -25,7 +25,7 @@ public class StrowgerActionTest{
         StrowgerAction action = new StrowgerAction();
         action.addAction( new Hangup() );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":1,\"msg\":\"\",\"data\":[{\"hangup\":{}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"hangup\":{}}]}", action.toJson() );
     }
     
     @Test
@@ -34,11 +34,11 @@ public class StrowgerActionTest{
         StrowgerAction action = new StrowgerAction();
         action.addAction( new Dtmf() );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":1,\"msg\":\"\",\"data\":[{\"dtmf\":{}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"dtmf\":{}}]}", action.toJson() );
         
         action = new StrowgerAction();
         action.addAction( new Dtmf(URI.create("http://test.wav"), 5, "#", 10) );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":1,\"msg\":\"\",\"data\":[{\"dtmf\":{\"url\":\"http://test.wav\",\"timeout\":5,\"finishOnKey\":\"#\",\"maxDigits\":10}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"dtmf\":{\"url\":\"http://test.wav\",\"timeout\":5,\"finishOnKey\":\"#\",\"maxDigits\":10}}]}", action.toJson() );
     }
 }
