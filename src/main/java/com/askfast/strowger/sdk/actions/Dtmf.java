@@ -1,10 +1,8 @@
 package com.askfast.strowger.sdk.actions;
 
 import java.net.URI;
-import javax.lang.model.type.NoType;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonTypeName(value = "dtmf")
 public class Dtmf implements Action {
@@ -58,7 +56,6 @@ public class Dtmf implements Action {
     }
     
     @JsonTypeInfo(use=JsonTypeInfo.Id.NONE)
-    @JsonDeserialize(as=NoType.class)
     public Play getPlay() {
         return play;
     }
