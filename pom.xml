@@ -91,6 +91,13 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+	
+  <!-- Sonatype repo submission stuff -->		
+  <parent>		
+    <groupId>org.sonatype.oss</groupId>		
+    <artifactId>oss-parent</artifactId>		
+    <version>7</version>		
+  </parent>
   
   <build>
     <plugins>

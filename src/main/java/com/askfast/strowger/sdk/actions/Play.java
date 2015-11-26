@@ -1,7 +1,8 @@
 package com.askfast.strowger.sdk.actions;
 
 import java.net.URI;
-
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
@@ -11,23 +12,31 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName(value = "play")
 public class Play implements Action {
 
-    private URI location;
+    private List<URI> locations;
     
     public Play() {}
     
-    public Play(URI location) {
-        this.location = location;
+    public Play(List<URI> locations) {
+        this.locations = locations;
     }
 
-    public URI getLocation() {
-        return location;
+    public List<URI> getLocations() {
+        return locations;
     }
 
     /**
      * Sets location of the audio file
      * @param url location of the audio file
      */
-    public void setLocation( URI location ) {
-        this.location = location;
+    public void setLocations( List<URI> locations ) {
+        this.locations = locations;
+    }
+    
+    public void addLocation(URI location) {
+        if(this.locations == null) {
+            this.locations = new ArrayList<>();
+        }
+        
+        this.locations.add(location);
     }
 }

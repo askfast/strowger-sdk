@@ -1,9 +1,8 @@
 package com.askfast.strowger.sdk.actions;
 import java.net.URI;
-
+import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
-
 import com.askfast.strowger.sdk.actions.Play;
 import com.askfast.strowger.sdk.actions.StrowgerAction;
 
@@ -14,9 +13,9 @@ public class StrowgerActionTest{
     public void play() {
         
         StrowgerAction action = new StrowgerAction();
-        action.addAction( new Play(URI.create("http://test.wav")) );
+        action.addAction( new Play(Arrays.asList(URI.create("http://test.wav"))) );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"play\":{\"location\":\"http://test.wav\"}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"play\":{\"locations\":[\"http://test.wav\"]}}]}", action.toJson() );
     }
     
     @Test
@@ -37,8 +36,9 @@ public class StrowgerActionTest{
         Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"dtmf\":{}}]}", action.toJson() );
         
         action = new StrowgerAction();
-        action.addAction( new Dtmf(URI.create("http://test.wav"), 5, "#", 10) );
+        Play play = new Play(Arrays.asList(URI.create("http://test.wav")));
+        action.addAction( new Dtmf(URI.create("http://askfast.answer"), 5, "#", 10, play) );
         
-        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"dtmf\":{\"url\":\"http://test.wav\",\"timeout\":5,\"finishOnKey\":\"#\",\"maxDigits\":10}}]}", action.toJson() );
+        Assert.assertEquals( "{\"status\":0,\"version\":\"1.0\",\"msg\":\"\",\"data\":[{\"dtmf\":{\"url\":\"http://askfast.answer\",\"timeout\":5,\"finishOnKey\":\"#\",\"maxDigits\":10,\"play\":{\"locations\":[\"http://test.wav\"]}}}]}", action.toJson() );
     }
 }
