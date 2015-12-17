@@ -2,13 +2,11 @@ package com.askfast.strowger.sdk.rest;
 
 
 import java.util.List;
-
 import com.askfast.strowger.sdk.model.Address;
 import com.askfast.strowger.sdk.model.AddressConfig;
 import com.askfast.strowger.sdk.model.Dial;
 import com.askfast.strowger.sdk.model.RequestLog;
 import com.askfast.strowger.sdk.model.StrowgerResponse;
-
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.DELETE;

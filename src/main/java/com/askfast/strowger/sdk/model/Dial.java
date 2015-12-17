@@ -1,6 +1,8 @@
 package com.askfast.strowger.sdk.model;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dial{
 
@@ -10,6 +12,8 @@ public class Dial{
     private URI completionUrl;
     private int timeout;
     private String sendKeys;
+    private String preConnectUrl;
+    private List<Peer> peers;
     
     public Dial() {}
     
@@ -75,5 +79,33 @@ public class Dial{
     
     public void setSendKeys( String sendKeys ) {
         this.sendKeys = sendKeys;
+    }
+
+    public String getPreConnectUrl() {
+
+        return preConnectUrl;
+    }
+
+    public void setPreConnectUrl(String preConnectUrl) {
+
+        this.preConnectUrl = preConnectUrl;
+    }
+
+    public List<Peer> getPeers() {
+
+        return peers;
+    }
+
+    public void setPeers(List<Peer> peers) {
+
+        this.peers = peers;
+    }
+    
+    public void addPeer(Peer peer) {
+
+        if (peer != null) {
+            peers = peers != null ? peers : new ArrayList<Peer>();
+            peers.add(peer);
+        }
     }
 }
