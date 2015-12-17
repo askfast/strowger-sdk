@@ -4,7 +4,7 @@
 
 	<groupId>com.askfast.strowger.sdk</groupId>
 	<artifactId>strowger-sdk</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.0-SNAPSHOT</version>
 
 	<name>Strowger SDK</name>
 	<description>Java helper library for Strowger API</description>
