@@ -37,12 +37,9 @@ public class StrowgerRestClient {
     
     /**
      * Creates an AskFastRestClient instance.
-     *
-     * @param tenantKey
-     *            Your tenantKey
-     * @param token
-     *            Your token
-     * @param isDev
+     * @param tenantKey Your tenantKey
+     * @param token Your token
+     * @param isDev Logs some header and body sent if True
      */
     public StrowgerRestClient(final String tenantKey, final String token, final Boolean isDev) {
         this(tenantKey, token, null, isDev);
@@ -53,12 +50,9 @@ public class StrowgerRestClient {
      * Creates an StrowgerRestClient instance. Be sure the token is valid, otherwise any request will fail and most
      * likely throw an exception.
      *
-     * @param tenantKey
-     *         Your tenantKey
-     * @param token
-     *         Your token
-     * @param endpoint
-     *         The endpoint, the url of API endpoint you wish to use. (The default is set to: https://api.thinkingphones.com)
+     * @param tenantKey Your tenantKey
+     * @param token Your token
+     * @param endpoint The endpoint, the url of API endpoint you wish to use. (The default is set to: https://strowger.thinkingphones.com)
      */
     public StrowgerRestClient(final String tenantKey, final String token, final String endpoint, final Boolean isDev) {
         this.tenantKey = tenantKey;
@@ -87,9 +81,8 @@ public class StrowgerRestClient {
     
     /**
      * Retrieves a DID by number
-     * @param number
-     * @return Address
-     * @throws IOException
+     * @param number The number for which the DID must be retrieved
+     * @return Address The retrived address if found, else returns null
      */
     public Address getAddress(String number) throws IOException {
         StrowgerRestInterface service = getRestInterface();
@@ -103,7 +96,6 @@ public class StrowgerRestClient {
     /**
      * Retrieves a list of all the DIDs
      * @return List<Address>
-     * @throws IOException
      */
     public List<Address> getAddresses() throws IOException {
         StrowgerRestInterface service = getRestInterface();
@@ -113,10 +105,9 @@ public class StrowgerRestClient {
     
     /**
      * Configure a DID
-     * @param address
-     * @param addressConfig
-     * @return Address
-     * @throws IOException
+     * @param address address to be configured
+     * @param addressConfig The config which is linked to the given address
+     * @return Address The address that is configured if the given number is found
      */
     public Address configureAddress(String address, AddressConfig addressConfig) throws IOException {
         StrowgerRestInterface service = getRestInterface();
@@ -129,9 +120,9 @@ public class StrowgerRestClient {
     
     /**
      * Initiate a phone from a DID to a Peer or list of Peers
-     * @param address
-     * @param dial
-     * @return
+     * @param address Address for initiating a call
+     * @param dial The action needed to be performed when the call is performed
+     * @return The Call that is triggered. Also contains the callId
      */
     public Call initiateCall(String address, Dial dial) {
 

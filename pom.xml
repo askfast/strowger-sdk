@@ -52,7 +52,7 @@
 		<junit.version>4.11</junit.version>
 		<maven-source-plugin.version>2.2.1</maven-source-plugin.version>
 		<maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
-		<gpg.version>1.5</gpg.version>
+		<gpg.version>1.6</gpg.version>
 		<java.version>1.7</java.version>
 	</properties>
 

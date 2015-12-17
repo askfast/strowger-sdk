@@ -41,8 +41,8 @@ public class Dial implements Action {
 
     /**
      * Adds no status events, preConnectUrl or completionUrl
-     * @param caller
-     * @param called
+     * @param caller The address of the member who is calling
+     * @param called The address of the member is being called
      */
     public Dial(String caller, String called) {
         
@@ -50,6 +50,17 @@ public class Dial implements Action {
         addPeer(new Peer(called, null));
     }
     
+    /**
+     * Simple consturctor with options
+     * @param callerId This address will be displayed as the callerId
+     * @param sendKeys Any pre-determined keys will be sent to this number when picked up
+     * @param preConnectUrl Strowger performs this action based on the request received from this url
+     * @param completionUrl Strowger sends the termination information to this endpoint
+     * @param ringTimeout The time in seconds that it waits after ringing. 
+     * @param callTimeout The time in seconds that it waits after calling. 
+     * @param record Options of recording a call. 
+     * @param finishOnStar If strowger must end a call on entry of these keys in the same sequence
+     */
     public Dial(String callerId, String sendKeys, URI preConnectUrl, URI completionUrl, Integer ringTimeout,
         Integer callTimeout, CallRecord record, Boolean finishOnStar) {
 

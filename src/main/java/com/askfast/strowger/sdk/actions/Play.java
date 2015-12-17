@@ -26,12 +26,16 @@ public class Play implements Action {
 
     /**
      * Sets location of the audio file
-     * @param url location of the audio file
+     * @param locations Array of urls that can be played
      */
     public void setLocations( List<URI> locations ) {
         this.locations = locations;
     }
     
+    /**
+     * Add a single url to the list of audio to be played
+     * @param location
+     */
     public void addLocation(URI location) {
         if(this.locations == null) {
             this.locations = new ArrayList<>();
