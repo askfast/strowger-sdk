@@ -34,7 +34,7 @@ public class Play implements Action {
     
     /**
      * Add a single url to the list of audio to be played
-     * @param location
+     * @param location Location to be added.
      */
     public void addLocation(URI location) {
         if(this.locations == null) {

@@ -53,6 +53,7 @@ public class StrowgerRestClient {
      * @param tenantKey Your tenantKey
      * @param token Your token
      * @param endpoint The endpoint, the url of API endpoint you wish to use. (The default is set to: https://strowger.thinkingphones.com)
+     * @param isDev Logs some header and body sent if True
      */
     public StrowgerRestClient(final String tenantKey, final String token, final String endpoint, final Boolean isDev) {
         this.tenantKey = tenantKey;
@@ -65,6 +66,11 @@ public class StrowgerRestClient {
         }
     }
     
+    /**
+     * Check if the given number exists in Strowger
+     * @param number Number that is looked up
+     * @return True if found, false if not found.
+     */
     public boolean addressExists(String number) {
         Address address = null;
         try {
@@ -83,6 +89,7 @@ public class StrowgerRestClient {
      * Retrieves a DID by number
      * @param number The number for which the DID must be retrieved
      * @return Address The retrived address if found, else returns null
+     * @throws IOException This exception is thrown if the endpoint is not reachable
      */
     public Address getAddress(String number) throws IOException {
         StrowgerRestInterface service = getRestInterface();
@@ -95,7 +102,8 @@ public class StrowgerRestClient {
     
     /**
      * Retrieves a list of all the DIDs
-     * @return List<Address>
+     * @return A list of addresses that are available for the tenant
+     * @throws IOException This exception is thrown if the endpoint is not reachable
      */
     public List<Address> getAddresses() throws IOException {
         StrowgerRestInterface service = getRestInterface();
@@ -108,6 +116,7 @@ public class StrowgerRestClient {
      * @param address address to be configured
      * @param addressConfig The config which is linked to the given address
      * @return Address The address that is configured if the given number is found
+     * @throws IOException This exception is thrown if the endpoint is not reachable
      */
     public Address configureAddress(String address, AddressConfig addressConfig) throws IOException {
         StrowgerRestInterface service = getRestInterface();
