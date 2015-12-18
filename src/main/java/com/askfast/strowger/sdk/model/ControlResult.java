@@ -1,7 +1,6 @@
 package com.askfast.strowger.sdk.model;
 
 import java.io.IOException;
-
 import com.askfast.strowger.util.JOM;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -12,6 +11,8 @@ public class ControlResult {
     private Call call;
     private String dtmf;
     private String recordingUrl;
+    private DtmfFinishReason dtmfFinishReason; 
+    
     
     public ControlResult() {}
     
@@ -74,5 +75,15 @@ public class ControlResult {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public DtmfFinishReason getDtmfFinishReason() {
+
+        return dtmfFinishReason;
+    }
+
+    public void setDtmfFinishReason(DtmfFinishReason dtmfFinishReason) {
+
+        this.dtmfFinishReason = dtmfFinishReason;
     }
 }

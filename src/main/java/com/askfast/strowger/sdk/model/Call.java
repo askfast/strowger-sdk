@@ -1,46 +1,9 @@
 package com.askfast.strowger.sdk.model;
 
+import java.util.Collection;
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Call {
-
-    public enum DtmfFinishReason {
-
-        /**
-         * Means that the max length of the dtmf capture was reached
-         */
-        MAX_DIGITS("maxDigits"), 
-        /**
-         * Means that the termination key was pressed by the caller
-         */
-        FINISH_KEY("finishKey"),
-        /**
-         * The caller hanged up the call
-         */
-        HANGUP("hangup"),
-        /**
-         * The timeout was reached
-         */
-        TIMEOUT("timeout");
-
-        private String name;
-
-        private DtmfFinishReason(String name) {
-            this.name = name;
-        }
-
-        @JsonCreator
-        public static DtmfFinishReason fromJson(String name) {
-
-            for (DtmfFinishReason reason : values()) {
-                if (reason.toString().equalsIgnoreCase(name) || reason.name.equalsIgnoreCase(name)) {
-                    return reason;
-                }
-            }
-            return null;
-        }
-    }
 
     private String callId;
     private String caller;
@@ -49,12 +12,21 @@ public class Call {
     private Date dialTime;
     private Date connectTime;
     private Date terminationTime;
-    private String completionReason;
-    private DtmfFinishReason dtmfFinishReason;
+    private Collection<Peer> dialedPeers;
+    private String originCallId;
+    private String originAddress;
+    private String tenantId;
+    private String serviceId;
+    private String endpointAddress;
+    private String disposition;
 
     public Call() {
     }
 
+    /**
+     * Specific callid for this instance
+     * @return String callid
+     */
     public String getCallId() {
 
         return callId;
@@ -65,6 +37,10 @@ public class Call {
         this.callId = callId;
     }
 
+    /**
+     * The caller
+     * @return String caller
+     */
     public String getCaller() {
 
         return caller;
@@ -75,6 +51,10 @@ public class Call {
         this.caller = caller;
     }
 
+    /**
+     * The address of the person called
+     * @return String address
+     */
     public String getCalled() {
 
         return called;
@@ -85,6 +65,10 @@ public class Call {
         this.called = called;
     }
 
+    /**
+     * The direction of the call
+     * @return Returns either outgoing or incoming
+     */
     public String getCallType() {
 
         return callType;
@@ -95,6 +79,10 @@ public class Call {
         this.callType = callType;
     }
 
+    /**
+     * The timestamp of the request made
+     * @return TimeStamp in the format yyyy-mm-ddThh:mm:ss.mssZ format (US timezone)
+     */
     public Date getDialTime() {
 
         return dialTime;
@@ -105,6 +93,10 @@ public class Call {
         this.dialTime = dialTime;
     }
 
+    /**
+     * The timestamp of the actual call connection made
+     * @return TimeStamp in the format yyyy-mm-ddThh:mm:ss.mssZ format (US timezone)
+     */
     public Date getConnectTime() {
 
         return connectTime;
@@ -114,6 +106,11 @@ public class Call {
 
         this.connectTime = connectTime;
     }
+
+    /**
+     * The timestamp of when the call is terminated
+     * @return TimeStamp in the format yyyy-mm-ddThh:mm:ss.mssZ format (US timezone)
+     */
 
     public Date getTerminationTime() {
 
@@ -125,23 +122,102 @@ public class Call {
         this.terminationTime = terminationTime;
     }
 
-    public String getCompletionReason() {
+    /**
+     * The addresses that are dialed in.
+     * @return Collection of all {@link Peer}
+     */
+    public Collection<Peer> getDialedPeers() {
 
-        return completionReason;
+        return dialedPeers;
     }
 
-    public void setCompletionReason(String completionReason) {
+    public void setDialedPeers(Collection<Peer> dialedPeers) {
 
-        this.completionReason = completionReason;
+        this.dialedPeers = dialedPeers;
     }
 
-    public DtmfFinishReason getDtmfFinishReason() {
-
-        return dtmfFinishReason;
+    /**
+     * Unique callId that is the parent of this id.
+     * @return String callId of the parent
+     */
+    public String getOriginCallId() {
+    
+        return originCallId;
     }
 
-    public void setDtmfFinishReason(DtmfFinishReason dtmfFinishReason) {
+    
+    public void setOriginCallId(String originCallId) {
+    
+        this.originCallId = originCallId;
+    }
 
-        this.dtmfFinishReason = dtmfFinishReason;
+    /**
+     * IP address of the call requester
+     * @return
+     */
+    public String getOriginAddress() {
+    
+        return originAddress;
+    }
+
+    public void setOriginAddress(String originAddress) {
+    
+        this.originAddress = originAddress;
+    }
+
+    /**
+     * The customer id, in case of multiple accounts.
+     * @return String tenantid
+     */
+    public String getTenantId() {
+    
+        return tenantId;
+    }
+    
+    public void setTenantId(String tenantId) {
+    
+        this.tenantId = tenantId;
+    }
+
+    /**
+     * The carrierid that is used to perform this call
+     * @return String of carrierid
+     */
+    public String getServiceId() {
+    
+        return serviceId;
+    }
+    
+    public void setServiceId(String serviceId) {
+    
+        this.serviceId = serviceId;
+    }
+    
+    /**
+     * the adapter address used to perform the sequence of actions
+     * @return String adapter myAddress
+     */
+    public String getEndpointAddress() {
+    
+        return endpointAddress;
+    }
+    
+    public void setEndpointAddress(String endpointAddress) {
+    
+        this.endpointAddress = endpointAddress;
+    }
+    
+    /**
+     * Call status
+     * @return String status of the call
+     */
+    public String getDisposition() {
+    
+        return disposition;
+    }
+    
+    public void setDisposition(String disposition) {
+    
+        this.disposition = disposition;
     }
 }
