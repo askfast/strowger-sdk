@@ -12,7 +12,8 @@ public class Call {
     private Date dialTime;
     private Date connectTime;
     private Date terminationTime;
-    private Collection<Peer> dialedPeers;
+    private Collection<DialedPeer> dialedPeers;
+    private String originName;
     private String originCallId;
     private String originAddress;
     private String tenantId;
@@ -126,12 +127,12 @@ public class Call {
      * The addresses that are dialed in.
      * @return Collection of all {@link Peer}
      */
-    public Collection<Peer> getDialedPeers() {
+    public Collection<DialedPeer> getDialedPeers() {
 
         return dialedPeers;
     }
 
-    public void setDialedPeers(Collection<Peer> dialedPeers) {
+    public void setDialedPeers(Collection<DialedPeer> dialedPeers) {
 
         this.dialedPeers = dialedPeers;
     }
@@ -219,5 +220,15 @@ public class Call {
     public void setDisposition(String disposition) {
     
         this.disposition = disposition;
+    }
+
+    public String getOriginName() {
+
+        return originName;
+    }
+
+    public void setOriginName(String originName) {
+
+        this.originName = originName;
     }
 }

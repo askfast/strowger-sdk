@@ -15,6 +15,7 @@ public class Dial implements Action {
     private URI preConnectUrl;
     private Integer ringTimeout;
     private Integer callTimeout;
+    private Integer timeout;
     private String callerId;
     private CallRecord record;
     private URI completionUrl;
@@ -170,5 +171,16 @@ public class Dial implements Action {
     public void setFinishOnStar(Boolean finishOnStar) {
 
         this.finishOnStar = finishOnStar;
+    }
+
+    public Integer getTimeout() {
+        
+        timeout = timeout != null ? timeout : ringTimeout;
+        return timeout;
+    }
+
+    public void setTimeout(Integer timeout) {
+
+        this.timeout = timeout;
     }
 }

@@ -13,11 +13,16 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class Play implements Action {
 
     private List<URI> locations;
+    private String location;
     
     public Play() {}
     
     public Play(List<URI> locations) {
         this.locations = locations;
+    }
+    
+    public Play(String location) {
+        this.setLocation(location);
     }
 
     public List<URI> getLocations() {
@@ -42,5 +47,15 @@ public class Play implements Action {
         }
         
         this.locations.add(location);
+    }
+
+    public String getLocation() {
+
+        return location;
+    }
+
+    public void setLocation(String location) {
+
+        this.location = location;
     }
 }
