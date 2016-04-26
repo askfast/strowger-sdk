@@ -1,15 +1,13 @@
 package com.askfast.strowger.sdk;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import com.askfast.strowger.sdk.model.Address;
 import com.askfast.strowger.sdk.model.Call;
 import com.askfast.strowger.sdk.model.Dial;
@@ -45,7 +43,7 @@ public class StrowgerRestClientTest{
         StrowgerResponse<List<Address>> resp = new StrowgerResponse<>( data );
         server.enqueue(new MockResponse().setBody(resp.toJson()));
 
-        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString());
+        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString(), true);
         List<Address> addresses = client.getAddresses();
         
         for(int i=0; i<data.size(); i++) {
@@ -71,7 +69,7 @@ public class StrowgerRestClientTest{
         resp2.setMsg( "Unkown error: null" );
         server.enqueue(new MockResponse().setBody(resp2.toJson()).setResponseCode( 404));
 
-        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString());
+        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString(), true);
         Address address1 = client.getAddress(number1);
         
         assertEquals(expectedAddresses.getAddress(), address1.getAddress());
@@ -104,7 +102,7 @@ public class StrowgerRestClientTest{
         
         Dial dial = new Dial(caller, called);
         
-        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString());
+        StrowgerRestClient client = new StrowgerRestClient(key, token, baseUrl.toString(), true);
         Call call1 = client.initiateCall( caller, dial);
         
         assertEquals(expectedCall.getCallId(), call1.getCallId());

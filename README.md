@@ -10,7 +10,7 @@ The SDK to interact with the strowger API.
 <dependency>
   <groupId>com.askfast.strowger.sdk</groupId>
   <artifactId>strowger-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 

@@ -11,6 +11,7 @@ public class StatusCallback {
     
     public StatusCallback(URI url, List<String> events) {
         this.url = url;
+        this.events = events;
     }
     
     public URI getUrl() {

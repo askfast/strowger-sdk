@@ -1,7 +1,6 @@
 package com.askfast.strowger.sdk.actions;
 
 import java.net.URI;
-
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName(value = "record")
@@ -14,6 +13,10 @@ public class Record implements Action {
     
     public Record() {}
     
+    public Record(URI url) {
+        this.url = url;
+    }
+
     public URI getUrl() {
         return url;
     }

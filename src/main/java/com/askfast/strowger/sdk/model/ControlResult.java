@@ -1,30 +1,33 @@
 package com.askfast.strowger.sdk.model;
 
 import java.io.IOException;
-
 import com.askfast.strowger.util.JOM;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ControlResult {
     
     private Call call;
     private String dtmf;
-    private String recordingUrl;
+    private String recordUrl;
+    private DtmfFinishReason dtmfFinishReason; 
+    private String dialResult;
     
     public ControlResult() {}
     
     public ControlResult(Call call) {
         this.call = call;
         this.dtmf = null;
-        this.recordingUrl = null;
+        this.recordUrl = null;
     }
     
     public ControlResult(Call call, String dtmf) {
         this.call = call;
         this.dtmf = dtmf;
-        this.recordingUrl = null;
+        this.recordUrl = null;
     }
     
     public static ControlResult fromJson(String json) {
@@ -55,12 +58,12 @@ public class ControlResult {
         this.dtmf = dtmf;
     }
     
-    public String getRecordingUrl() {
-        return recordingUrl;
+    public String getRecordUrl() {
+        return recordUrl;
     }
     
-    public void setRecordingUrl( String recordingUrl ) {
-        this.recordingUrl = recordingUrl;
+    public void setRecordingUrl( String recordUrl ) {
+        this.recordUrl = recordUrl;
     }
     
     @JsonIgnore
@@ -74,5 +77,25 @@ public class ControlResult {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public DtmfFinishReason getDtmfFinishReason() {
+
+        return dtmfFinishReason;
+    }
+
+    public void setDtmfFinishReason(DtmfFinishReason dtmfFinishReason) {
+
+        this.dtmfFinishReason = dtmfFinishReason;
+    }
+
+    public String getDialResult() {
+
+        return dialResult;
+    }
+
+    public void setDialResult(String dialResult) {
+
+        this.dialResult = dialResult;
     }
 }
