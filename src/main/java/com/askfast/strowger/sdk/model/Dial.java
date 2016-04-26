@@ -14,23 +14,25 @@ public class Dial{
     private String sendKeys;
     private String preConnectUrl;
     private List<Peer> peers;
+    private Boolean immediateProgressTones = false;
     
     public Dial() {}
     
     public Dial(String caller, String called) {
-        this(caller, null, called, null, 30);
+        this(caller, null, called, null, 30, false);
     }
     
     public Dial(String caller, String callerName, String called) {
-        this(caller, callerName, called, null, 30);
+        this(caller, callerName, called, null, 30, false);
     }
     
-    public Dial(String caller, String callerName, String called, URI completionUrl, Integer timeout) {
+    public Dial(String caller, String callerName, String called, URI completionUrl, Integer timeout, Boolean immediateProgressTones) {
         this.caller = caller;
         this.callerName = callerName;
         this.called = called;
         this.completionUrl = completionUrl;
         this.timeout = timeout;
+        this.immediateProgressTones = immediateProgressTones;
     }
     
     public String getCaller() {
@@ -99,6 +101,16 @@ public class Dial{
     public void setPeers(List<Peer> peers) {
 
         this.peers = peers;
+    }
+    
+    public Boolean getImmediateProgressTones() {
+
+        return immediateProgressTones;
+    }
+    
+    public void setImmediateProgressTones(Boolean immediateProgressTones) {
+
+        this.immediateProgressTones = immediateProgressTones;
     }
     
     public void addPeer(Peer peer) {
