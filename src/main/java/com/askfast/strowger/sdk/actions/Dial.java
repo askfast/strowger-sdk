@@ -20,6 +20,7 @@ public class Dial implements Action {
     private CallRecord record;
     private URI completionUrl;
     private Boolean finishOnStar;
+    private Boolean immediateProgressTones;
 
     public enum CallRecord {
 
@@ -182,5 +183,15 @@ public class Dial implements Action {
     public void setTimeout(Integer timeout) {
 
         this.timeout = timeout;
+    }
+
+    public Boolean getImmediateProgressTones() {
+
+        return immediateProgressTones;
+    }
+    
+    public void setImmediateProgressTones(Boolean immediateProgressTones) {
+
+        this.immediateProgressTones = immediateProgressTones;
     }
 }
