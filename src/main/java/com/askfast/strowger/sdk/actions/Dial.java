@@ -2,8 +2,12 @@ package com.askfast.strowger.sdk.actions;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.askfast.strowger.sdk.model.Peer;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -21,6 +25,7 @@ public class Dial implements Action {
     private URI completionUrl;
     private Boolean finishOnStar;
     private Boolean immediateProgressTones;
+    private Map<String, Object> properties;
 
     public enum CallRecord {
 
@@ -193,5 +198,18 @@ public class Dial implements Action {
     public void setImmediateProgressTones(Boolean immediateProgressTones) {
 
         this.immediateProgressTones = immediateProgressTones;
+    }
+    
+    @JsonAnyGetter
+    public Map<String, Object> getProperties() {
+    
+        return properties;
+    }
+
+    @JsonAnySetter
+    public void setProperty(String key, Object value) {
+
+        this.properties = this.properties != null ? this.properties : new HashMap<String, Object>();
+        this.properties.put(key, value);
     }
 }
